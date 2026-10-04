@@ -62,7 +62,7 @@ export const englishTranslations: Record<string, string> = {
   "האם אתה כותב עבודות אקדמיות?": "Do you write academic work for clients?",
   "לא. הכתיבה נשארת תמיד שלך. התפקיד שלי הוא להכווין, לחדד, לשאול שאלות ולבנות יחד בהירות ומבנה.": "No. The writing always remains yours. My role is to guide, clarify, ask questions and help you build structure and understanding.",
   "איך עובד התשלום?": "How does payment work?",
-  "פגישת ליווי בת שעה עולה 800 ₪. בין הפגישות ניתן לפנות בשאלות נקודתיות — ללא תשלום נוסף. לרוב, השקעה בליווי בשלב מוקדם חוסכת זמן, מאמץ ועלויות בהמשך.": "A one-hour session costs ILS 800. Between sessions, you can ask focused questions at no extra charge. Investing in support early on often saves time, effort and costs later.",
+  "פגישת ליווי בת שעה עולה 450 ₪. בין הפגישות ניתן לפנות בשאלות נקודתיות — ללא תשלום נוסף. לרוב, השקעה בליווי בשלב מוקדם חוסכת זמן, מאמץ ועלויות בהמשך.": "A one-hour session costs ILS 450. Between sessions, you can ask focused questions at no extra charge. Investing in support early on often saves time, effort and costs later.",
   "מנורת שולחן מאירה ספרים פתוחים ומחברות על שולחן לימוד חמים": "A desk lamp illuminating open books and notebooks on a warm study desk",
   "ד״ר עמית קוגלר": "Dr. Amit Kugler",
   "ד\"ר עמית קוגלר. כל הזכויות שמורות.": "Dr. Amit Kugler. All rights reserved.",
