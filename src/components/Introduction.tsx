@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 const Introduction = () => {
   const { t, isRTL } = useLanguage();
   return (
-    <section className="section-padding bg-background">
+    <section className="px-4 md:px-8 pt-8 md:pt-16 lg:pt-24 pb-16 md:pb-24 bg-background">
       <div className="container-narrow mx-auto text-start" dir={isRTL ? "rtl" : "ltr"}>
         <div className="space-y-8">
           <div className="animate-fade-up" style={{ animationDelay: "0.1s" }}>

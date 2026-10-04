@@ -4,8 +4,8 @@ import heroImage from "@/assets/hero-academic-light.jpg";
 const Hero = () => {
   const { t, isRTL } = useLanguage();
   return (
-    <section className="min-h-screen pt-16 relative overflow-hidden bg-hero-bg">
-      <div className="flex flex-col lg:flex-row min-h-[calc(100vh-4rem)]">
+    <section className="lg:min-h-screen pt-16 relative overflow-hidden bg-hero-bg">
+      <div className="flex flex-col lg:flex-row lg:min-h-[calc(100vh-4rem)]">
         {/* Image - Left Side (on desktop) */}
         <div className="lg:w-1/2 order-2 lg:order-1 h-64 md:h-80 lg:h-auto">
           <img
