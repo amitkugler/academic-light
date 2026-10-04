@@ -36,7 +36,7 @@ const services = [
 
 const Services = () => {
   return (
-    <section className="section-padding bg-section-alt">
+    <section className="px-4 md:px-8 pt-16 md:pt-24 pb-8 md:pb-10 bg-section-alt">
       <div className="container mx-auto px-4 md:px-8">
         <div className="text-right mb-12" dir="rtl">
           <h2 className="text-2xl md:text-3xl font-bold mb-4">
