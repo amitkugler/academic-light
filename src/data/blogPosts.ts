@@ -348,8 +348,8 @@ export const blogPosts: BlogPost[] = [
   {
     id: 5,
     slug: "living-abroad-academic-journey",
-    title: "מעבר וחיים בחו״ל במסגרת המסע האקדמי",
-    titleEn: "Moving and Living Abroad in Your Academic Journey",
+    title: "מעבר וחיים בחו״ל לצורכי לימודים ומחקר",
+    titleEn: "Moving and Living Abroad for Study and Research",
     excerpt: "מעבר לחו״ל לצורך לימודים או מחקר הוא הרפתקה מרגשת אך גם מאתגרת. הנה מה שחשוב לדעת.",
     excerptEn: "Moving abroad for studies or research is an exciting but challenging adventure. Here's what you need to know.",
     content: "חיים בחו״ל פותחים דלתות להזדמנויות אקדמיות ייחודיות, אך גם מביאים אתגרים.",

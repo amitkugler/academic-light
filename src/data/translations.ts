@@ -67,7 +67,7 @@ export const englishTranslations: Record<string, string> = {
   "ד״ר עמית קוגלר": "Dr. Amit Kugler",
   "ד\"ר עמית קוגלר. כל הזכויות שמורות.": "Dr. Amit Kugler. All rights reserved.",
   "מגזין": "Magazine",
-  "מאמרים ותכנים מעשיים על כתיבה אקדמית, ניהול מחקר והתמודדות עם אתגרים בדרך - בגובה העיניים. בואו ללמוד איך לעבוד חכם יותר, לכתוב ברור יותר - ולהרגיש בטוחים יותר בתהליך.": "Practical articles on academic writing, research management and the challenges along the way, in clear, approachable language. Learn to work smarter, write more clearly and feel more confident in the process.",
+  "מאמרים ותכנים מעשיים על כתיבה אקדמית, ניהול מחקר והתמודדות עם אתגרים בדרך - בגובה העיניים. בואו ללמוד איך לעבוד חכם יותר, לכתוב ברור יותר, ולהרגיש בטוחים יותר בתהליך.": "Practical articles on academic writing, research management and the challenges along the way, in clear, approachable language. Learn to work smarter, write more clearly and feel more confident in the process.",
   "הדף לא נמצא": "Page not found",
   "חזרה למגזין": "Back to the magazine",
   "שתפו:": "Share:",
