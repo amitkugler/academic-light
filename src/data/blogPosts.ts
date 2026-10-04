@@ -474,7 +474,9 @@ export const blogPosts: BlogPost[] = [
     `,
     fullContentEn: `
       <h2>Why is Effective Reading Important?</h2>
-      <p>During research, you'll need to read dozens or even hundreds of papers.</p>
+      <p>During research, you'll need to read dozens or even hundreds of papers. Inefficient reading can waste valuable hours.</p>
+      <h2>The Initial Screening Approach</h2>
+      <p>Before reading a paper in depth, do a quick screening: title, abstract, figures and conclusions.</p>
       <p>Remember: The goal is to get the maximum from each paper you read!</p>
     `,
     category: "מיומנויות מחקר",
@@ -487,7 +489,7 @@ export const blogPosts: BlogPost[] = [
     title: "איך להתמודד עם ביקורת ומשוב על העבודה",
     titleEn: "How to Handle Feedback and Criticism on Your Work",
     excerpt: "קבלת משוב היא חלק בלתי נפרד מהתהליך האקדמי. הנה איך להפוך ביקורת להזדמנות לצמיחה.",
-    excerptEn: "Receiving feedback is an integral part of the academic process.",
+    excerptEn: "Receiving feedback is an integral part of the academic process. Here is how to turn criticism into an opportunity for growth.",
     content: "משוב הוא כלי חיוני לשיפור העבודה המחקרית.",
     contentEn: "Feedback is an essential tool for improving research work.",
     fullContent: `
@@ -510,7 +512,7 @@ export const blogPosts: BlogPost[] = [
     title: "איך לשמור על מוטיבציה לאורך המחקר",
     titleEn: "How to Stay Motivated Throughout Your Research",
     excerpt: "מחקר הוא מרתון, לא ספרינט. הנה טיפים לשמירה על המוטיבציה גם בזמנים קשים.",
-    excerptEn: "Research is a marathon, not a sprint.",
+    excerptEn: "Research is a marathon, not a sprint. Here are tips for staying motivated even during difficult times.",
     content: "שמירה על מוטיבציה היא אחד האתגרים הגדולים במחקר ארוך טווח.",
     contentEn: "Maintaining motivation is one of the biggest challenges in long-term research.",
     fullContent: `

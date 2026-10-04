@@ -1,19 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Menu, X, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { useGeoLanguage, saveLanguagePreference } from "@/hooks/useGeoLanguage";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [language, setLanguage] = useState<"he" | "en">("he");
-  const detectedLanguage = useGeoLanguage();
-
-  useEffect(() => {
-    if (detectedLanguage) {
-      setLanguage(detectedLanguage);
-    }
-  }, [detectedLanguage]);
+  const { language, setLanguage, t } = useLanguage();
 
   const navItems = language === "he" 
     ? [
@@ -28,7 +21,7 @@ const Header = () => {
   const toggleLanguage = () => {
     const newLang = language === "he" ? "en" : "he";
     setLanguage(newLang);
-    saveLanguagePreference(newLang);
+
   };
 
   return (
@@ -69,6 +62,7 @@ const Header = () => {
               variant="ghost"
               size="sm"
               onClick={toggleLanguage}
+              aria-label={t("Switch to English", "Switch to Hebrew")}
               className="flex items-center gap-2"
             >
               <Globe className="h-4 w-4" />
@@ -82,6 +76,7 @@ const Header = () => {
               variant="ghost"
               size="sm"
               onClick={toggleLanguage}
+              aria-label={t("Switch to English", "Switch to Hebrew")}
               className="flex items-center gap-1"
             >
               <Globe className="h-4 w-4" />
@@ -91,6 +86,8 @@ const Header = () => {
               variant="ghost"
               size="icon"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label={t("פתיחה וסגירה של התפריט", "Toggle navigation menu")}
+              aria-expanded={isMenuOpen}
             >
               {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </Button>

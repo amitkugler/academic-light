@@ -1,3 +1,4 @@
+import { useLanguage } from "@/contexts/LanguageContext";
 import { useParams, Link } from "react-router-dom";
 import { ArrowRight, Facebook, Linkedin, Mail, Printer, Share2 } from "lucide-react";
 import Header from "@/components/Header";
@@ -25,6 +26,7 @@ const blogImages: Record<number, string> = {
 };
 
 const BlogPost = () => {
+  const { t, isRTL } = useLanguage();
   const { slug } = useParams();
   const post = blogPosts.find((p) => p.slug === slug);
 
@@ -34,10 +36,8 @@ const BlogPost = () => {
         <Header />
         <main className="pt-24 section-padding">
           <div className="container-narrow mx-auto text-center">
-            <h1 className="text-3xl font-bold mb-4">הדף לא נמצא</h1>
-            <Link to="/magazine" className="text-accent hover:underline">
-              חזרה למגזין
-            </Link>
+            <h1 className="text-3xl font-bold mb-4">{t("הדף לא נמצא")}</h1>
+            <Link to="/magazine" className="text-accent hover:underline">{t("חזרה למגזין")}</Link>
           </div>
         </main>
         <Footer />
@@ -46,7 +46,7 @@ const BlogPost = () => {
   }
 
   const shareUrl = typeof window !== "undefined" ? window.location.href : "";
-  const shareTitle = post.title;
+  const shareTitle = t(post.title, post.titleEn);
 
   const handleShare = (platform: string) => {
     const urls: Record<string, string> = {
@@ -71,7 +71,7 @@ const BlogPost = () => {
         <div className="relative h-64 md:h-96 overflow-hidden">
           <img
             src={blogImages[post.id] || post.image}
-            alt={post.title}
+            alt={t(post.title, post.titleEn)}
             width={1280}
             height={800}
             className="w-full h-full object-cover"
@@ -86,26 +86,22 @@ const BlogPost = () => {
               to="/magazine"
               className="inline-flex items-center gap-2 text-accent hover:underline mb-6"
             >
-              <ArrowRight className="w-4 h-4" />
-              חזרה למגזין
-            </Link>
+              <ArrowRight className={isRTL ? "w-4 h-4" : "w-4 h-4 rotate-180"} />{t("חזרה למגזין")}</Link>
 
             {/* Category */}
             <span className="inline-block bg-accent text-accent-foreground text-sm px-3 py-1 rounded mb-4">
-              {post.category}
+              {t(post.category, post.categoryEn)}
             </span>
 
             {/* Title */}
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-right">
-              {post.title}
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-start">
+              {t(post.title, post.titleEn)}
             </h1>
 
             {/* Share Buttons */}
-            <div className="flex flex-wrap gap-2 mb-8 justify-end">
+            <div className="flex flex-wrap gap-2 mb-8 justify-start">
               <span className="flex items-center gap-2 text-muted-foreground">
-                <Share2 className="w-4 h-4" />
-                שתפו:
-              </span>
+                <Share2 className="w-4 h-4" />{t("שתפו:")}</span>
               <Button
                 variant="outline"
                 size="sm"
@@ -151,16 +147,16 @@ const BlogPost = () => {
                 className="gap-2"
               >
                 <Printer className="w-4 h-4" />
-                <span className="hidden sm:inline">הדפסה</span>
+                <span className="hidden sm:inline">{t("הדפסה")}</span>
               </Button>
             </div>
 
             {/* Content */}
-            <div className="prose prose-lg max-w-none text-right">
-              <p className="text-xl text-muted-foreground mb-8">{post.excerpt}</p>
+            <div className="prose prose-lg max-w-none text-start">
+              <p className="text-xl text-muted-foreground mb-8">{t(post.excerpt, post.excerptEn)}</p>
               <div
                 className="text-foreground leading-relaxed space-y-4"
-                dangerouslySetInnerHTML={{ __html: post.fullContent }}
+                dangerouslySetInnerHTML={{ __html: t(post.fullContent, post.fullContentEn) }}
               />
             </div>
 
@@ -168,9 +164,7 @@ const BlogPost = () => {
             <div className="border-t border-border mt-12 pt-8">
               <div className="flex flex-wrap gap-2 justify-center">
                 <span className="flex items-center gap-2 text-muted-foreground w-full text-center justify-center mb-2">
-                  <Share2 className="w-4 h-4" />
-                  אהבת? שתפו!
-                </span>
+                  <Share2 className="w-4 h-4" />{t("אהבת? שתפו!")}</span>
                 <Button
                   variant="outline"
                   size="sm"

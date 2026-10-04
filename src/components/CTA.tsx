@@ -1,14 +1,14 @@
+import { useLanguage } from "@/contexts/LanguageContext";
 import { MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const CTA = () => {
+  const { t, isRTL } = useLanguage();
   return (
     <section className="section-padding bg-background">
-      <div className="container-narrow mx-auto text-center" dir="rtl">
-        <h2 className="text-2xl md:text-3xl font-bold mb-4 animate-fade-up">
-          מפסיקים להיות מתוסכלים
-          <br />
-          <span className="text-accent">בואו נעשה את זה יחד!</span>
+      <div className="container-narrow mx-auto text-center" dir={isRTL ? "rtl" : "ltr"}>
+        <h2 className="text-2xl md:text-3xl font-bold mb-4 animate-fade-up">{t("מפסיקים להיות מתוסכלים")}<br />
+          <span className="text-accent">{t("בואו נעשה את זה יחד!")}</span>
         </h2>
         <div className="animate-fade-up" style={{ animationDelay: "0.2s" }}>
           <Button
@@ -21,9 +21,7 @@ const CTA = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <MessageCircle className="w-5 h-5" />
-              דברו איתי ב-WhatsApp
-            </a>
+              <MessageCircle className="w-5 h-5" />{t("דברו איתי ב-WhatsApp")}</a>
           </Button>
         </div>
       </div>

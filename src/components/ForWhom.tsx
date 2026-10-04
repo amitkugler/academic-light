@@ -1,3 +1,4 @@
+import { useLanguage } from "@/contexts/LanguageContext";
 import { Check, X } from "lucide-react";
 
 const suitableFor = [
@@ -18,35 +19,32 @@ const notSuitableFor = [
 ];
 
 const ForWhom = () => {
+  const { t, isRTL } = useLanguage();
   return (
     <section className="section-padding bg-section-alt">
       <div className="container mx-auto px-4 md:px-8">
         <div className="grid md:grid-cols-2 gap-12">
           {/* Suitable For */}
-          <div className="text-right animate-fade-up" dir="rtl">
-            <h2 className="text-2xl md:text-3xl font-bold mb-8 text-accent-blue">
-              למי זה מתאים?
-            </h2>
+          <div className="text-start animate-fade-up" dir={isRTL ? "rtl" : "ltr"}>
+            <h2 className="text-2xl md:text-3xl font-bold mb-8 text-accent-blue">{t("למי זה מתאים?")}</h2>
             <ul className="space-y-4">
               {suitableFor.map((item, index) => (
                 <li key={index} className="flex items-start gap-3">
                   <Check className="w-5 h-5 text-whatsapp mt-1 flex-shrink-0" />
-                  <span className="text-foreground">{item}</span>
+                  <span className="text-foreground">{t(item)}</span>
                 </li>
               ))}
             </ul>
           </div>
 
           {/* Not Suitable For */}
-          <div className="text-right animate-fade-up" style={{ animationDelay: "0.2s" }} dir="rtl">
-            <h2 className="text-2xl md:text-3xl font-bold mb-8 text-destructive">
-              למי זה לא מתאים?
-            </h2>
+          <div className="text-start animate-fade-up" style={{ animationDelay: "0.2s" }} dir={isRTL ? "rtl" : "ltr"}>
+            <h2 className="text-2xl md:text-3xl font-bold mb-8 text-destructive">{t("למי זה לא מתאים?")}</h2>
             <ul className="space-y-4">
               {notSuitableFor.map((item, index) => (
                 <li key={index} className="flex items-start gap-3">
                   <X className="w-5 h-5 text-destructive mt-1 flex-shrink-0" />
-                  <span className="text-muted-foreground">{item}</span>
+                  <span className="text-muted-foreground">{t(item)}</span>
                 </li>
               ))}
             </ul>

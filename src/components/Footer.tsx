@@ -1,12 +1,14 @@
+import { useLanguage } from "@/contexts/LanguageContext";
 import { Mail } from "lucide-react";
 
 const Footer = () => {
+  const { t } = useLanguage();
   return (
     <footer className="py-8 bg-foreground text-background">
       <div className="container mx-auto px-4 md:px-8">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm opacity-80">
-            © {new Date().getFullYear()} ד"ר עמית קוגלר. כל הזכויות שמורות.
+            © {new Date().getFullYear()} {t('ד"ר עמית קוגלר. כל הזכויות שמורות.')}
           </p>
           <a
             href="mailto:amitkugler@gmail.com"

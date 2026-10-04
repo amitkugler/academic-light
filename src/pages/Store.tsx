@@ -1,3 +1,4 @@
+import { useLanguage } from "@/contexts/LanguageContext";
 import { ExternalLink, FileText, Presentation, BookOpen, Layout, FolderKanban, Lightbulb, Wrench } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -180,20 +181,17 @@ const storeItems: StoreItem[] = [
 ];
 
 const Store = () => {
+  const { t, isRTL, language } = useLanguage();
   return (
     <div className="min-h-screen bg-background">
       <Header />
       <main className="pt-24">
         {/* Hero Section */}
         <section className="section-padding bg-section-alt">
-          <div className="container-narrow mx-auto text-right" dir="rtl">
+          <div className="container-narrow mx-auto text-start" dir={isRTL ? "rtl" : "ltr"}>
             <div className="w-24 h-1 bg-accent mb-6"></div>
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
-              חנות
-            </h1>
-            <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
-              כלים, תבניות ומדריכים שיעזרו להתקדם במסע האקדמי. כל המוצרים נבנו מתוך ניסיון אישי של שנים באקדמיה.
-            </p>
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">{t("חנות")}</h1>
+            <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">{t("כלים, תבניות ומדריכים שיעזרו להתקדם במסע האקדמי. כל המוצרים נבנו מתוך ניסיון אישי של שנים באקדמיה.")}</p>
           </div>
         </section>
 
@@ -209,21 +207,21 @@ const Store = () => {
                 >
                   {item.comingSoon && (
                     <div className="absolute top-4 left-4 z-10">
-                      <Badge variant="secondary">בקרוב</Badge>
+                      <Badge variant="secondary">{t("בקרוב")}</Badge>
                     </div>
                   )}
-                  <CardHeader className="text-right" dir="rtl">
+                  <CardHeader className="text-start" dir={isRTL ? "rtl" : "ltr"}>
                     <div className="flex justify-between items-start mb-4">
-                      <Badge variant="outline">{item.category}</Badge>
+                      <Badge variant="outline">{t(item.category, item.categoryEn)}</Badge>
                       <div className="text-accent-blue">{item.icon}</div>
                     </div>
-                    <CardTitle className="text-xl">{item.title}</CardTitle>
-                    <CardDescription>{item.description}</CardDescription>
+                    <CardTitle className="text-xl">{t(item.title, item.titleEn)}</CardTitle>
+                    <CardDescription>{t(item.description, item.descriptionEn)}</CardDescription>
                   </CardHeader>
-                  <CardContent className="flex-1 text-right" dir="rtl">
+                  <CardContent className="flex-1 text-start" dir={isRTL ? "rtl" : "ltr"}>
                     <ul className="space-y-2 text-sm text-muted-foreground">
-                      {item.features.map((feature, i) => (
-                        <li key={i} className="flex items-center gap-2 justify-end">
+                      {(language === "he" ? item.features : item.featuresEn).map((feature, i) => (
+                        <li key={i} className="flex items-center gap-2 justify-start">
                           <span>{feature}</span>
                           <span className="text-accent-blue">✓</span>
                         </li>
@@ -235,7 +233,7 @@ const Store = () => {
                       disabled={item.comingSoon}
                       className="gap-2"
                     >
-                      {item.comingSoon ? "בקרוב" : "לרכישה"}
+                      {item.comingSoon ? t("בקרוב") : t("לרכישה")}
                       {!item.comingSoon && <ExternalLink className="w-4 h-4" />}
                     </Button>
                     <span className="text-2xl font-bold text-accent">{item.price}</span>
@@ -248,17 +246,11 @@ const Store = () => {
 
         {/* Contact Section */}
         <section className="section-padding bg-section-alt">
-          <div className="container-narrow mx-auto text-center" dir="rtl">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">
-              צריכים משהו מותאם אישית?
-            </h2>
-            <p className="text-muted-foreground mb-6">
-              אשמח ליצור עבורכם תבניות או מדריכים מותאמים לצרכים הספציפיים.
-            </p>
+          <div className="container-narrow mx-auto text-center" dir={isRTL ? "rtl" : "ltr"}>
+            <h2 className="text-2xl md:text-3xl font-bold mb-4">{t("צריכים משהו מותאם אישית?")}</h2>
+            <p className="text-muted-foreground mb-6">{t("אשמח ליצור עבורכם תבניות או מדריכים מותאמים לצרכים הספציפיים.")}</p>
             <Button asChild size="lg">
-              <a href="mailto:amitkugler@gmail.com">
-                צרו קשר
-              </a>
+              <a href="mailto:amitkugler@gmail.com">{t("צרו קשר")}</a>
             </Button>
           </div>
         </section>

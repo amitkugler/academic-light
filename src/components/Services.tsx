@@ -1,3 +1,4 @@
+import { useLanguage } from "@/contexts/LanguageContext";
 import { FileText, Database, Edit3, BookOpen, Presentation, Heart } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
@@ -35,37 +36,32 @@ const services = [
 ];
 
 const Services = () => {
+  const { t, isRTL } = useLanguage();
   return (
     <section className="px-4 md:px-8 pt-16 md:pt-24 pb-8 md:pb-10 bg-section-alt">
       <div className="container mx-auto px-4 md:px-8">
-        <div className="text-right mb-12" dir="rtl">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4">
-            בכל שלב בתהליך האקדמי
-            <br />
-            <span className="text-accent-blue">– אני פה להאיר!</span>
+        <div className="text-start mb-12" dir={isRTL ? "rtl" : "ltr"}>
+          <h2 className="text-2xl md:text-3xl font-bold mb-4">{t("בכל שלב בתהליך האקדמי")}<br />
+            <span className="text-accent-blue">{t("– אני פה להאיר!")}</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl">
-            איך כותבים הצעת מחקר, מאמר או תזה? איך מתכננים ניסויים נכון? איך קוראים מאמרים אקדמיים בצורה יעילה? ואיך מתמודדים עם עומס, לחץ והררי נתונים — בלי ללכת לאיבוד?
-          </p>
-          <p className="text-lg font-medium text-foreground mt-4">
-            אני כאן כדי ללוות חוקרים וחוקרות מהצעת המחקר ועד התזה — כדי שתוכלו לעבוד בצורה רגועה, יעילה וברורה יותר.
-          </p>
+          <p className="text-lg text-muted-foreground max-w-2xl">{t("איך כותבים הצעת מחקר, מאמר או תזה? איך מתכננים ניסויים נכון? איך קוראים מאמרים אקדמיים בצורה יעילה? ואיך מתמודדים עם עומס, לחץ והררי נתונים — בלי ללכת לאיבוד?")}</p>
+          <p className="text-lg font-medium text-foreground mt-4">{t("אני כאן כדי ללוות חוקרים וחוקרות מהצעת המחקר ועד התזה — כדי שתוכלו לעבוד בצורה רגועה, יעילה וברורה יותר.")}</p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, index) => (
             <Card
-              key={service.title}
+              key={t(service.title)}
               className="bg-card border-border hover:shadow-lg transition-shadow duration-300 animate-fade-up h-full flex flex-col"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <CardContent className="p-6 text-right flex flex-col h-full" dir="rtl">
-                <div className="w-12 h-12 rounded-full bg-accent-blue/10 flex items-center justify-center mb-4 mr-auto flex-shrink-0">
+              <CardContent className="p-6 text-start flex flex-col h-full" dir={isRTL ? "rtl" : "ltr"}>
+                <div className="w-12 h-12 rounded-full bg-accent-blue/10 flex items-center justify-center mb-4 ms-auto flex-shrink-0">
                   <service.icon className="w-6 h-6 text-accent-blue" />
                 </div>
-                <h3 className="text-lg font-semibold mb-3 flex-shrink-0">{service.title}</h3>
+                <h3 className="text-lg font-semibold mb-3 flex-shrink-0">{t(service.title)}</h3>
                 <p className="text-muted-foreground leading-relaxed flex-grow">
-                  {service.description}
+                  {t(service.description)}
                 </p>
               </CardContent>
             </Card>

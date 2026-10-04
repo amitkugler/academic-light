@@ -1,3 +1,4 @@
+import { useLanguage } from "@/contexts/LanguageContext";
 import {
   Accordion,
   AccordionContent,
@@ -42,12 +43,11 @@ const faqs = [
 ];
 
 const FAQ = () => {
+  const { t, isRTL } = useLanguage();
   return (
-    <section className="section-padding bg-section-alt" id="content" dir="rtl">
+    <section className="section-padding bg-section-alt" id="content" dir={isRTL ? "rtl" : "ltr"}>
       <div className="container-narrow mx-auto">
-        <h2 className="text-2xl md:text-3xl font-bold mb-8 text-right animate-fade-up">
-          כמה שאלות שחוזרות כמעט תמיד
-        </h2>
+        <h2 className="text-2xl md:text-3xl font-bold mb-8 text-start animate-fade-up">{t("כמה שאלות שחוזרות כמעט תמיד")}</h2>
 
         <Accordion type="single" collapsible className="w-full">
           {faqs.map((faq, index) => (
@@ -57,11 +57,11 @@ const FAQ = () => {
               className="animate-fade-up"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <AccordionTrigger className="text-right text-lg font-medium hover:text-accent">
-                {faq.question}
+              <AccordionTrigger className="text-start text-lg font-medium hover:text-accent">
+                {t(faq.question)}
               </AccordionTrigger>
-              <AccordionContent className="text-right text-muted-foreground text-base leading-relaxed">
-                {faq.answer}
+              <AccordionContent className="text-start text-muted-foreground text-base leading-relaxed">
+                {t(faq.answer)}
               </AccordionContent>
             </AccordionItem>
           ))}
