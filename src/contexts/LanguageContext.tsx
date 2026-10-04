@@ -23,7 +23,7 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     document.documentElement.lang = language;
     document.documentElement.dir = language === "he" ? "rtl" : "ltr";
-    const title = language === "he" ? 'ד"ר עמית קוגלר - ליווי במסע האקדמי | מחקר וכתיבה אקדמית' : "Dr. Amit Kugler — Academic Support | Research and Academic Writing";
+    const title = language === "he" ? 'ד״ר עמית קוגלר | ליווי והכוונה במחקר ובכתיבה' : "Dr. Amit Kugler | Research and Writing Guidance";
     const description = language === "he" ? "ליווי אקדמי מקצועי לסטודנטים בתארים מתקדמים. תמיכה בכתיבת הצעות מחקר, עריכת תזה ודוקטורט, ובניית שאלונים מחקריים." : "Personal academic support for graduate researchers, including research proposals, scientific writing, experiment planning and thesis preparation.";
     document.title = title;
     for (const selector of ['meta[name="description"]', 'meta[property="og:description"]', 'meta[name="twitter:description"]']) document.querySelector(selector)?.setAttribute("content", description);
