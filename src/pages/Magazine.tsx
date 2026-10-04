@@ -34,7 +34,7 @@ const Magazine = () => {
           <div className="container-narrow mx-auto text-start">
             <div className="w-24 h-1 bg-accent mb-6"></div>
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">{t("מגזין")}</h1>
-            <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">{t("מאמרים ותכנים מעשיים על כתיבה אקדמית, ניהול מחקר והתמודדות עם אתגרים בדרך — בגובה העיניים. בואו ללמוד איך לעבוד חכם יותר, לכתוב ברור יותר — ולהרגיש בטוחים יותר בתהליך.")}</p>
+            <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">{t("מאמרים ותכנים מעשיים על כתיבה אקדמית, ניהול מחקר והתמודדות עם אתגרים בדרך - בגובה העיניים. בואו ללמוד איך לעבוד חכם יותר, לכתוב ברור יותר - ולהרגיש בטוחים יותר בתהליך.")}</p>
           </div>
         </section>
 
