@@ -1,4 +1,5 @@
-import { createContext, useContext, useEffect, useState, ReactNode } from "react";
+import { createContext, useContext, useEffect, useRef, useState, ReactNode } from "react";
+import { detectRegion } from "@/lib/region";
 import { englishTranslations } from "@/data/translations";
 
 type Language = "he" | "en";
@@ -14,7 +15,25 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
     try { return localStorage.getItem("preferred-language") === "en" ? "en" : "he"; }
     catch { return "he"; }
   });
+  const manuallySelected = useRef(false);
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem("preferred-language");
+      if (saved === "he" || saved === "en") {
+        manuallySelected.current = true;
+        return;
+      }
+    } catch { /* Automatic detection remains available. */ }
+    let cancelled = false;
+    detectRegion().then(region => {
+      if (region && !cancelled && !manuallySelected.current) {
+        updateLanguage(region.country === "IL" ? "he" : "en");
+      }
+    });
+    return () => { cancelled = true; };
+  }, []);
   const setLanguage = (lang: Language) => {
+    manuallySelected.current = true;
     updateLanguage(lang);
     try { localStorage.setItem("preferred-language", lang); } catch { /* Session selection still works. */ }
   };
@@ -24,7 +43,7 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
     document.documentElement.lang = language;
     document.documentElement.dir = language === "he" ? "rtl" : "ltr";
     const title = language === "he" ? 'ד״ר עמית קוגלר | ליווי והכוונה במחקר ובכתיבה' : "Dr. Amit Kugler | Research and Writing Guidance";
-    const description = language === "he" ? "ליווי אקדמי מקצועי לסטודנטים בתארים מתקדמים. תמיכה בכתיבת הצעות מחקר, עריכת תזה ודוקטורט, ובניית שאלונים מחקריים." : "Personal academic support for graduate researchers, including research proposals, scientific writing, experiment planning and thesis preparation.";
+    const description = language === "he" ? "ליווי אקדמי מקצועי לחוקרים וחוקרות בתארים מתקדמים. תמיכה בכתיבת הצעות מחקר, ליווי בכתיבת תזה ודוקטורט, ובניית שאלונים מחקריים." : "Personal academic support for master's, doctoral and postdoctoral researchers, including research proposals, scientific writing, experiment planning and thesis preparation.";
     document.title = title;
     for (const selector of ['meta[name="description"]', 'meta[property="og:description"]', 'meta[name="twitter:description"]']) document.querySelector(selector)?.setAttribute("content", description);
     for (const selector of ['meta[property="og:title"]', 'meta[name="twitter:title"]']) document.querySelector(selector)?.setAttribute("content", title);

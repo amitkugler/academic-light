@@ -84,7 +84,7 @@ const BlogPost = () => {
             {/* Back Link */}
             <Link
               to="/magazine"
-              className="inline-flex items-center gap-2 text-accent hover:underline mb-6"
+              className="flex w-fit items-center gap-2 text-accent hover:underline mb-8"
             >
               <ArrowRight className={isRTL ? "w-4 h-4" : "w-4 h-4 rotate-180"} />{t("חזרה למגזין")}</Link>
 

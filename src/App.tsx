@@ -1,3 +1,4 @@
+import RouteScroll from "@/components/RouteScroll";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -19,6 +20,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <RouteScroll />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/magazine" element={<Magazine />} />

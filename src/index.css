@@ -90,8 +90,12 @@
     @apply border-border;
   }
 
-  html {
-    direction: inherit;
+  html[dir="rtl"] {
+    direction: rtl;
+  }
+
+  html[dir="ltr"] {
+    direction: ltr;
   }
 
   body {

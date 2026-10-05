@@ -12,10 +12,12 @@ const Header = () => {
     ? [
         { label: "בית", href: "/" },
         { label: "מגזין", href: "/magazine" },
+        { label: "יצירת קשר", href: "/#contact" },
       ]
     : [
         { label: "Home", href: "/" },
         { label: "Magazine", href: "/magazine" },
+        { label: "Contact", href: "/#contact" },
       ];
 
   const toggleLanguage = () => {
@@ -33,14 +35,14 @@ const Header = () => {
             {language === "he" ? (
               <>
                 ד"ר עמית קוגלר.{" "}
-                <span className="font-normal text-muted-foreground hidden sm:inline">
+                <span className="font-normal text-muted-foreground hidden xl:inline">
                   להאיר את התהליך האקדמי
                 </span>
               </>
             ) : (
               <>
                 Dr. Amit Kugler{" "}
-                <span className="font-normal text-muted-foreground hidden sm:inline">
+                <span className="font-normal text-muted-foreground hidden xl:inline">
                   Lighting the Academic Process
                 </span>
               </>

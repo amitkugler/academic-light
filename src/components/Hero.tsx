@@ -23,6 +23,7 @@ const Hero = () => {
               <span className="block text-[clamp(1.25rem,4.8vw,2rem)] lg:text-[clamp(1.25rem,2.4vw,2rem)] font-medium text-foreground leading-relaxed">{t("נבנה תהליך נעים וממוקד יותר")}</span>
               <span className="block mt-2 text-[clamp(0.875rem,3.6vw,1.375rem)] lg:text-[clamp(0.875rem,1.65vw,1.375rem)] text-muted-foreground leading-relaxed">{t("במחקר, בכתיבה ובחיים האקדמיים")}</span>
             </h1>
+            <p className="mt-6 max-w-lg text-base md:text-lg text-muted-foreground leading-relaxed">{t("ליווי אישי לחוקרים וחוקרות בתואר שני, בדוקטורט ובפוסט־דוקטורט, בתכנון המחקר, בכתיבה ובהתמודדות עם עומס.")}</p>
           </div>
         </div>
       </div>

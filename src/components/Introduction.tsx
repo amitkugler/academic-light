@@ -1,6 +1,5 @@
 import { useLanguage } from "@/contexts/LanguageContext";
-import { MessageCircle } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 const Introduction = () => {
   const { t, isRTL } = useLanguage();
@@ -10,16 +9,13 @@ const Introduction = () => {
         <div className="space-y-8">
           <div className="animate-fade-up" style={{ animationDelay: "0.1s" }}>
             <h2 className="text-2xl md:text-3xl font-bold mb-6">{t("אפשר להתקדם אחרת")}<br />
-              <span className="text-accent">{t("עם יותר בהירות, סדר וביטחון")}</span>
+              <span className="text-accent-blue">{t("עם יותר בהירות, סדר וביטחון")}</span>
             </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed mb-6">{t("בתהליך האקדמי הכול מתקיים במקביל - הצעות מחקר, קריאה, ניסויים, ניתוח נתונים וכתיבה. כשכל משימה דורשת זמן ותשומת לב, קל להרגיש עומס ולחץ ולהתקשות לראות מה הצעד הבא. ליווי מתאים עוזר לעשות סדר, להתמקד ולהתקדם בביטחון. מניסיוני בדוקטורט למדתי שתמיכה והכוונה נכונות הופכות את התהליך ליעיל, רגוע וברור יותר.")}</p>
+            <p className="text-lg text-muted-foreground leading-relaxed mb-6">{t("בתהליך האקדמי הכול מתקיים במקביל - הצעות מחקר, קריאה, ניסויים, ניתוח נתונים וכתיבה. כשכל משימה דורשת זמן ותשומת לב, קל להרגיש עומס ולחץ ולהתקשות לראות מה הצעד הבא. מניסיוני בדוקטורט למדתי כמה חשוב שיהיה עם מי לחשוב בקול, לבחון כיוונים ולפרק את האתגר לצעדים שאפשר לבצע. זה המקום שבו אני מציע ליווי אישי, שמותאם למחקר שלך ולמה שנדרש לך עכשיו.")}</p>
           </div>
 
           <div className="animate-fade-up" style={{ animationDelay: "0.2s" }}>
-            <Button asChild size="lg" className="bg-whatsapp hover:bg-whatsapp/90 text-primary-foreground font-semibold gap-2">
-              <a href="https://wa.me/972502056585" target="_blank" rel="noopener noreferrer">
-                <MessageCircle className="w-5 h-5" />{t("בול מה שחיפשתי - אפשר לדבר?")}</a>
-            </Button>
+            <WhatsAppButton label={t("בול מה שחיפשתי - אפשר לדבר?")} />
           </div>
         </div>
       </div>

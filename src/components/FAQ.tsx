@@ -1,3 +1,4 @@
+import SessionPricing from "@/components/SessionPricing";
 import { useLanguage } from "@/contexts/LanguageContext";
 import {
   Accordion,
@@ -31,9 +32,9 @@ const faqs = [
       "אם את/ה מרגיש/ה תקיעות, חוסר בהירות או תסכול סביב העבודה המחקרית - ויש רצון להתקדם בצורה מסודרת יותר - יש סיכוי גדול שהליווי יתאים.",
   },
   {
-    question: "האם אתה כותב עבודות אקדמיות?",
+    question: "מה ההבדל בין ליווי בכתיבה לבין כתיבה או עריכה במקומי?",
     answer:
-      "לא. הכתיבה נשארת תמיד שלך. התפקיד שלי הוא להכווין, לחדד, לשאול שאלות ולבנות יחד בהירות ומבנה.",
+      "בליווי אפשר לבחון יחד טיוטה, לקבל משוב על המבנה והטיעון, לזהות מה לא ברור וללמוד איך לשפר את הכתיבה. אני לא כותב את העבודה עבורך ולא מקבל טקסט לעריכה מלאה ולהחזרת גרסה מוכנה. הניסוח, התיקונים וההחלטות נשארים שלך, עם הכוונה מקצועית לאורך הדרך.",
   },
   {
     question: "איך עובד התשלום?",
@@ -61,7 +62,7 @@ const FAQ = () => {
                 {t(faq.question)}
               </AccordionTrigger>
               <AccordionContent className="text-start text-muted-foreground text-base leading-relaxed">
-                {t(faq.answer)}
+                {faq.question === "איך עובד התשלום?" ? <SessionPricing /> : t(faq.answer)}
               </AccordionContent>
             </AccordionItem>
           ))}

@@ -1,3 +1,4 @@
+import Contact from "@/components/Contact";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Introduction from "@/components/Introduction";
@@ -18,6 +19,7 @@ const Index = () => {
         <About />
         <ForWhom />
         <FAQ />
+        <Contact />
       </main>
       <Footer />
     </div>

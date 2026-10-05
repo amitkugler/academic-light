@@ -45,7 +45,7 @@ const Services = () => {
             <span className="text-accent-blue">{t("– אני פה להאיר!")}</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl">{t("איך כותבים הצעת מחקר, מאמר או תזה? איך מתכננים ניסויים נכון? איך קוראים מאמרים אקדמיים בצורה יעילה? ואיך מתמודדים עם עומס, לחץ והררי נתונים - בלי ללכת לאיבוד?")}</p>
-          <p className="text-lg font-medium text-foreground mt-4">{t("אני כאן כדי ללוות חוקרים וחוקרות מהצעת המחקר ועד התזה - כדי שתוכלו לעבוד בצורה רגועה, יעילה וברורה יותר.")}</p>
+          <p className="text-lg font-medium text-foreground mt-4">{t("אני כאן כדי ללוות חוקרים וחוקרות בשלבי המחקר, הכתיבה והגשת הצעות למימון - כדי שתוכלו לעבוד בצורה רגועה, יעילה וברורה יותר.")}</p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -56,10 +56,12 @@ const Services = () => {
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <CardContent className="p-6 text-start flex flex-col h-full" dir={isRTL ? "rtl" : "ltr"}>
-                <div className="w-12 h-12 rounded-full bg-accent-blue/10 flex items-center justify-center mb-4 ms-auto flex-shrink-0">
-                  <service.icon className="w-6 h-6 text-accent-blue" />
+                <div className="flex items-start gap-3 mb-4">
+                  <div className="w-12 h-12 rounded-full bg-accent-blue/10 flex items-center justify-center shrink-0">
+                    <service.icon className="w-6 h-6 text-accent-blue" aria-hidden="true" />
+                  </div>
+                  <h3 className="text-lg font-semibold min-w-0 pt-2.5">{t(service.title)}</h3>
                 </div>
-                <h3 className="text-lg font-semibold mb-3 flex-shrink-0">{t(service.title)}</h3>
                 <p className="text-muted-foreground leading-relaxed flex-grow">
                   {t(service.description)}
                 </p>
