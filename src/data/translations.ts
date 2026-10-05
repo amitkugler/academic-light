@@ -55,7 +55,7 @@ export const englishTranslations: Record<string, string> = {
   "איך אדע אם הליווי מתאים לי?": "How do I know if this support is right for me?",
   "אם את/ה מרגיש/ה תקיעות, חוסר בהירות או תסכול סביב העבודה המחקרית - ויש רצון להתקדם בצורה מסודרת יותר - יש סיכוי גדול שהליווי יתאים.": "If you feel stuck, uncertain or frustrated with your research and want to move forward in a more organised way, this support may be a good fit.",
   "איך עובד התשלום?": "How does payment work?",
-  "פגישת ליווי בת שעה עולה 550 ₪. בין הפגישות ניתן לפנות בשאלות נקודתיות - ללא תשלום נוסף. לרוב, השקעה בליווי בשלב מוקדם חוסכת זמן, מאמץ ועלויות בהמשך.": "A one-hour session costs ILS 550. Between sessions, you can ask focused questions at no extra charge. Investing in support early on often saves time, effort and costs later.",
+  "פגישת ליווי בת שעה עולה 450 ₪. בין הפגישות ניתן לפנות בשאלות נקודתיות - ללא תשלום נוסף. לרוב, השקעה בליווי בשלב מוקדם חוסכת זמן, מאמץ ועלויות בהמשך.": "A one-hour session costs ILS 450. Between sessions, you can ask focused questions at no extra charge. Investing in support early on often saves time, effort and costs later.",
   "מנורת שולחן מאירה ספרים פתוחים ומחברות על שולחן לימוד חמים": "A desk lamp illuminating open books and notebooks on a warm study desk",
   "ד״ר עמית קוגלר": "Dr. Amit Kugler",
   "ד\"ר עמית קוגלר. כל הזכויות שמורות.": "Dr. Amit Kugler. All rights reserved.",
