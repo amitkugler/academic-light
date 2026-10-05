@@ -106,7 +106,7 @@ const BlogPost = () => {
                 variant="outline"
                 size="sm"
                 onClick={() => handleShare("facebook")}
-                className="gap-2"
+                className="gap-2 text-[#1877F2] border-[#1877F2] hover:bg-[#1877F2] hover:text-white"
               >
                 <Facebook className="w-4 h-4" />
                 <span className="hidden sm:inline">Facebook</span>
@@ -115,7 +115,7 @@ const BlogPost = () => {
                 variant="outline"
                 size="sm"
                 onClick={() => handleShare("linkedin")}
-                className="gap-2"
+                className="gap-2 text-[#0A66C2] border-[#0A66C2] hover:bg-[#0A66C2] hover:text-white"
               >
                 <Linkedin className="w-4 h-4" />
                 <span className="hidden sm:inline">LinkedIn</span>
@@ -169,7 +169,7 @@ const BlogPost = () => {
                   variant="outline"
                   size="sm"
                   onClick={() => handleShare("facebook")}
-                  className="gap-2"
+                  className="gap-2 text-[#1877F2] border-[#1877F2] hover:bg-[#1877F2] hover:text-white"
                 >
                   <Facebook className="w-4 h-4" />
                   Facebook
@@ -178,7 +178,7 @@ const BlogPost = () => {
                   variant="outline"
                   size="sm"
                   onClick={() => handleShare("linkedin")}
-                  className="gap-2"
+                  className="gap-2 text-[#0A66C2] border-[#0A66C2] hover:bg-[#0A66C2] hover:text-white"
                 >
                   <Linkedin className="w-4 h-4" />
                   LinkedIn
