@@ -29,20 +29,20 @@ const Header = () => {
   return (
     <header className="fixed top-0 right-0 left-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
       <div className="container mx-auto px-4 md:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between gap-3 h-16">
           {/* Logo */}
-          <Link to="/" className="text-lg font-bold text-foreground" dir={language === "he" ? "rtl" : "ltr"}>
+          <Link to="/" className="min-w-0 whitespace-nowrap text-base lg:text-lg font-bold text-foreground" dir={language === "he" ? "rtl" : "ltr"}>
             {language === "he" ? (
               <>
                 ד"ר עמית קוגלר.{" "}
-                <span className="font-normal text-muted-foreground hidden xl:inline">
+                <span className="hidden sm:inline font-normal text-muted-foreground">
                   להאיר את התהליך האקדמי
                 </span>
               </>
             ) : (
               <>
                 Dr. Amit Kugler{" "}
-                <span className="font-normal text-muted-foreground hidden xl:inline">
+                <span className="hidden sm:inline font-normal text-muted-foreground">
                   Lighting the Academic Process
                 </span>
               </>
@@ -50,7 +50,7 @@ const Header = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-6">
+          <nav className="hidden md:flex shrink-0 items-center gap-3 lg:gap-6 text-sm lg:text-base">
             {navItems.map((item) => (
               <Link
                 key={item.label}
@@ -73,7 +73,7 @@ const Header = () => {
           </nav>
 
           {/* Mobile Menu Button */}
-          <div className="flex items-center gap-2 md:hidden">
+          <div className="flex shrink-0 items-center gap-2 md:hidden">
             <Button
               variant="ghost"
               size="sm"
