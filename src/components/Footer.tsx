@@ -4,7 +4,7 @@ import { Mail, Linkedin } from "lucide-react";
 const Footer = () => {
   const { t } = useLanguage();
   return (
-    <footer className="py-8 bg-foreground text-background">
+    <footer className="border-t border-white/10 bg-ink py-8 text-white/80">
       <div className="container mx-auto px-4 md:px-8">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm opacity-80">

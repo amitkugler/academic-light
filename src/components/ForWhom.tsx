@@ -1,5 +1,6 @@
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Check, X } from "lucide-react";
+import Reveal from "@/components/Reveal";
 
 const suitableFor = [
   "חוקרים וחוקרות בתואר שני, בדוקטורט ובפוסט־דוקטורט",
@@ -21,35 +22,35 @@ const notSuitableFor = [
 const ForWhom = () => {
   const { t, isRTL } = useLanguage();
   return (
-    <section className="section-padding bg-section-alt">
-      <div className="container mx-auto px-4 md:px-8">
-        <div className="grid md:grid-cols-2 gap-12">
-          {/* Suitable For */}
-          <div className="text-start animate-fade-up" dir={isRTL ? "rtl" : "ltr"}>
-            <h2 className="text-2xl md:text-3xl font-bold mb-8 text-accent-blue">{t("למי זה מתאים?")}</h2>
-            <ul className="space-y-4">
-              {suitableFor.map((item, index) => (
-                <li key={index} className="flex items-start gap-3">
-                  <Check className="w-5 h-5 text-whatsapp mt-1 flex-shrink-0" />
-                  <span className="text-foreground">{t(item)}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+    <section className="bg-background py-24 md:py-36">
+      <div className="shell grid gap-5 lg:grid-cols-[1.25fr_1fr]" dir={isRTL ? "rtl" : "ltr"}>
+        <Reveal className="card-surface p-8 text-start md:p-10">
+          <h2 className="display-md">{t("למי זה מתאים?")}</h2>
+          <ul className="mt-8 space-y-4">
+            {suitableFor.map((item) => (
+              <li key={item} className="flex items-start gap-3 text-lg">
+                <span className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-whatsapp/15 text-whatsapp">
+                  <Check className="h-4 w-4" strokeWidth={3} aria-hidden="true" />
+                </span>
+                <span className="text-foreground">{t(item)}</span>
+              </li>
+            ))}
+          </ul>
+        </Reveal>
 
-          {/* Not Suitable For */}
-          <div className="text-start animate-fade-up" style={{ animationDelay: "0.2s" }} dir={isRTL ? "rtl" : "ltr"}>
-            <h2 className="text-2xl md:text-3xl font-bold mb-8 text-destructive">{t("למי זה לא מתאים?")}</h2>
-            <ul className="space-y-4">
-              {notSuitableFor.map((item, index) => (
-                <li key={index} className="flex items-start gap-3">
-                  <X className="w-5 h-5 text-destructive mt-1 flex-shrink-0" />
-                  <span className="text-muted-foreground">{t(item)}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
+        <Reveal delay={120} className="rounded-[1.75rem] border border-border bg-secondary/60 p-8 text-start md:p-10">
+          <h2 className="display-md text-muted-foreground">{t("למי זה לא מתאים?")}</h2>
+          <ul className="mt-8 space-y-4">
+            {notSuitableFor.map((item) => (
+              <li key={item} className="flex items-start gap-3 text-lg">
+                <span className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-foreground/10 text-muted-foreground">
+                  <X className="h-4 w-4" strokeWidth={3} aria-hidden="true" />
+                </span>
+                <span className="text-muted-foreground">{t(item)}</span>
+              </li>
+            ))}
+          </ul>
+        </Reveal>
       </div>
     </section>
   );
