@@ -1,3 +1,4 @@
+import ArticleMeta from "@/components/ArticleMeta";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useParams, Link } from "react-router-dom";
 import { ArrowRight, Facebook, Linkedin, Mail, Printer, Share2 } from "lucide-react";
@@ -97,6 +98,8 @@ const BlogPost = () => {
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-start">
               {t(post.title, post.titleEn)}
             </h1>
+
+            <ArticleMeta post={post} className="mb-6" />
 
             {/* Share Buttons */}
             <div className="flex flex-wrap gap-2 mb-8 justify-start">

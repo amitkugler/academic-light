@@ -1,3 +1,4 @@
+import ArticleMeta from "@/components/ArticleMeta";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
@@ -67,6 +68,7 @@ const Magazine = () => {
                       <h2 className="text-lg font-bold mb-2 group-hover:text-accent transition-colors line-clamp-2">
                         {t(post.title, post.titleEn)}
                       </h2>
+                      <ArticleMeta post={post} className="mb-3" />
                       <p className="text-muted-foreground text-sm line-clamp-3">
                         {t(post.excerpt, post.excerptEn)}
                       </p>
