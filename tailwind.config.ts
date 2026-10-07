@@ -88,6 +88,12 @@ export default {
   				foreground: 'hsl(var(--card-foreground))'
   			},
   			whatsapp: 'hsl(var(--whatsapp))',
+  			ink: 'hsl(var(--ink))',
+  			burgundy: 'hsl(var(--burgundy))',
+  			glow: {
+  				DEFAULT: 'hsl(var(--glow))',
+  				soft: 'hsl(var(--glow-soft))'
+  			},
   			'hero-bg': 'hsl(var(--hero-bg))',
   			'section-alt': 'hsl(var(--section-alt))'
   		},

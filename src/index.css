@@ -6,8 +6,8 @@
 
 @layer base {
   :root {
-    --background: 40 30% 97%;
-    --foreground: 220 15% 20%;
+    --background: 40 23% 98%;
+    --foreground: 30 6% 11%;
 
     --card: 0 0% 100%;
     --card-foreground: 220 15% 20%;
@@ -22,7 +22,7 @@
     --secondary-foreground: 220 15% 20%;
 
     --muted: 40 15% 92%;
-    --muted-foreground: 220 10% 45%;
+    --muted-foreground: 30 4% 40%;
 
     --accent: 8 75% 50%;
     --accent-foreground: 0 0% 100%;
@@ -44,6 +44,13 @@
     --section-alt: 210 30% 97%;
     --text-highlight: 8 75% 50%;
     --whatsapp: 142 70% 40%;
+
+    /* Lamp-light palette for the redesign */
+    --ink: 30 12% 5%;
+    --burgundy: 353 50% 30%;
+    --glow: 36 95% 58%;
+    --glow-soft: 32 100% 92%;
+    --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .dark {
@@ -124,6 +131,132 @@
     content: '';
     @apply absolute bottom-0 right-0 w-full h-1 bg-accent rounded-full;
   }
+
+  /* Typography: tracking and leading tighten as size grows */
+  .display-xl {
+    font-size: clamp(2.75rem, 8vw, 6.5rem);
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+    font-weight: 700;
+  }
+
+  .display-lg {
+    font-size: clamp(2.25rem, 5.5vw, 4.5rem);
+    line-height: 1.06;
+    letter-spacing: -0.03em;
+    font-weight: 700;
+  }
+
+  .display-md {
+    font-size: clamp(1.75rem, 3.6vw, 3rem);
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    font-weight: 700;
+  }
+
+  .eyebrow {
+    @apply text-sm font-semibold;
+    letter-spacing: 0.01em;
+    color: hsl(var(--primary));
+  }
+
+  .lead {
+    font-size: clamp(1.125rem, 1.6vw, 1.375rem);
+    line-height: 1.55;
+    @apply text-muted-foreground;
+  }
+
+  .text-gradient-warm {
+    background: linear-gradient(100deg, hsl(42 100% 72%), hsl(var(--glow)) 45%, hsl(14 90% 60%));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .shell {
+    @apply mx-auto w-full max-w-6xl px-5 md:px-8;
+  }
+
+  /* Materials: translucent chrome with a bright edge where light catches it */
+  .glass {
+    background: hsl(0 0% 100% / 0.72);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid hsl(0 0% 100% / 0.6);
+    box-shadow: 0 1px 0 hsl(0 0% 100% / 0.5) inset, 0 10px 30px -12px hsl(30 20% 10% / 0.25);
+  }
+
+  .glass-dark {
+    background: hsl(30 10% 8% / 0.45);
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    border: 1px solid hsl(0 0% 100% / 0.14);
+  }
+
+  .card-surface {
+    @apply rounded-[1.75rem] bg-card;
+    box-shadow: 0 1px 2px hsl(30 20% 10% / 0.04), 0 12px 40px -18px hsl(30 20% 10% / 0.18);
+  }
+
+  .lift {
+    transition: transform 500ms var(--ease-spring), box-shadow 500ms var(--ease-spring);
+  }
+
+  @media (hover: hover) {
+    .lift:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 1px 2px hsl(30 20% 10% / 0.05), 0 24px 60px -20px hsl(30 20% 10% / 0.28);
+    }
+  }
+
+  /* Feedback on press, not on release */
+  .press {
+    transition: transform 100ms ease-out, filter 150ms ease-out;
+  }
+
+  .press:active {
+    transform: scale(0.97);
+  }
+
+  /* Scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px) scale(0.985);
+    transition:
+      opacity 900ms var(--ease-spring) var(--reveal-delay, 0ms),
+      transform 1100ms var(--ease-spring) var(--reveal-delay, 0ms);
+  }
+
+  .reveal[data-visible="true"] {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Hero: image settles back and dims as the page scrolls */
+  .hero-media {
+    transform: scale(calc(1.04 + var(--p, 0) * 0.14));
+    will-change: transform;
+  }
+
+  .hero-copy {
+    opacity: calc(1 - var(--p, 0) * 1.7);
+    transform: translateY(calc(var(--p, 0) * -70px));
+  }
+
+  .hero-enter {
+    animation: heroEnter 1400ms var(--ease-spring) both;
+    animation-delay: var(--enter-delay, 0ms);
+  }
+
+  /* Statement: each word lights up as the reader scrolls through it */
+  .word {
+    opacity: clamp(0.14, calc(var(--p, 0) * var(--n) - var(--i) + 1), 1);
+    transition: opacity 120ms linear;
+  }
+
+  .scroll-cue {
+    animation: scrollCue 2.4s var(--ease-spring) infinite;
+  }
 }
 
 @layer utilities {
@@ -153,5 +286,89 @@
     to {
       opacity: 1;
     }
+  }
+
+  @keyframes heroEnter {
+    from {
+      opacity: 0;
+      transform: translateY(32px);
+      filter: blur(8px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+      filter: blur(0);
+    }
+  }
+
+  @keyframes scrollCue {
+    0%, 100% { transform: translateY(0); opacity: 0.5; }
+    50% { transform: translateY(6px); opacity: 1; }
+  }
+
+  @keyframes menuIn {
+    from { opacity: 0; transform: translateY(-8px) scale(0.97); filter: blur(6px); }
+    to { opacity: 1; transform: none; filter: blur(0); }
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Reduced motion: keep the content, replace movement with gentle fades */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    transform: none;
+    transition: opacity 300ms ease;
+  }
+
+  .hero-media,
+  .hero-copy {
+    transform: none;
+  }
+
+  .hero-copy {
+    opacity: 1;
+  }
+
+  .hero-enter {
+    animation: fadeIn 400ms ease both;
+  }
+
+  .word {
+    opacity: 1;
+  }
+
+  .scroll-cue {
+    animation: none;
+  }
+
+  .lift,
+  .lift:hover {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .glass {
+    background: hsl(0 0% 100%);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .glass-dark {
+    background: hsl(30 10% 8% / 0.92);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
+
+@media (prefers-contrast: more) {
+  .glass {
+    background: hsl(0 0% 100%);
+    border-color: hsl(var(--foreground));
   }
 }

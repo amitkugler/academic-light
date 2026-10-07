@@ -1,19 +1,27 @@
 import { MessageCircle } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { cn } from "@/lib/utils";
 
-const WhatsAppButton = ({ label }: { label?: string }) => {
+const WhatsAppButton = ({ label, className }: { label?: string; className?: string }) => {
   const { t } = useLanguage();
   return (
-    <Button asChild size="lg" className="h-auto min-h-12 max-w-full whitespace-normal bg-whatsapp hover:bg-whatsapp text-white font-semibold gap-3 px-5 py-3">
-      <a href="https://wa.me/972502056585" target="_blank" rel="noopener noreferrer">
-        <MessageCircle aria-hidden="true" className="w-5 h-5 shrink-0" />
-        <span className="text-start">
-          <span className="block">{label ?? t("אפשר לדבר על המחקר שלך")}</span>
-          <span className="block mt-1 text-xs font-normal">{t("ללא התחייבות להמשך")}</span>
-        </span>
-      </a>
-    </Button>
+    <a
+      href="https://wa.me/972502056585"
+      target="_blank"
+      rel="noopener noreferrer"
+      className={cn(
+        "press inline-flex max-w-full items-center gap-3 rounded-full bg-whatsapp py-3 ps-4 pe-6 text-white shadow-[0_10px_30px_-10px_hsl(var(--whatsapp)/0.7)] hover:brightness-110 active:brightness-95",
+        className,
+      )}
+    >
+      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/20">
+        <MessageCircle aria-hidden="true" className="h-5 w-5" />
+      </span>
+      <span className="text-start leading-tight">
+        <span className="block font-semibold">{label ?? t("אפשר לדבר על המחקר שלך")}</span>
+        <span className="mt-0.5 block text-xs text-white/85">{t("ללא התחייבות להמשך")}</span>
+      </span>
+    </a>
   );
 };
 export default WhatsAppButton;

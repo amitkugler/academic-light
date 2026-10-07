@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Menu, X, Globe } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -8,110 +7,103 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { language, setLanguage, t } = useLanguage();
 
-  const navItems = language === "he" 
+  const navItems = language === "he"
     ? [
-        { label: "בית", href: "/" },
+        { label: "איך זה עובד", href: "/#how" },
+        { label: "עליי", href: "/#about" },
+        { label: "שאלות", href: "/#faq" },
         { label: "מגזין", href: "/magazine" },
-        { label: "יצירת קשר", href: "/#contact" },
       ]
     : [
-        { label: "Home", href: "/" },
+        { label: "How it works", href: "/#how" },
+        { label: "About", href: "/#about" },
+        { label: "FAQ", href: "/#faq" },
         { label: "Magazine", href: "/magazine" },
-        { label: "Contact", href: "/#contact" },
       ];
 
-  const toggleLanguage = () => {
-    const newLang = language === "he" ? "en" : "he";
-    setLanguage(newLang);
+  const toggleLanguage = () => setLanguage(language === "he" ? "en" : "he");
 
-  };
+  const languageButton = (
+    <button
+      type="button"
+      onClick={toggleLanguage}
+      aria-label={t("Switch to English", "Switch to Hebrew")}
+      className="press flex h-9 items-center gap-1.5 rounded-full px-3 text-sm font-medium text-foreground/80 hover:bg-foreground/5 hover:text-foreground"
+    >
+      <Globe className="h-4 w-4" aria-hidden="true" />
+      {language === "he" ? "EN" : "עב"}
+    </button>
+  );
 
   return (
-    <header className="fixed top-0 right-0 left-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
-      <div className="container mx-auto px-4 md:px-8">
-        <div className="flex items-center justify-between gap-3 h-16">
-          {/* Logo */}
-          <Link to="/" className="min-w-0 whitespace-nowrap text-base lg:text-lg font-bold text-foreground" dir={language === "he" ? "rtl" : "ltr"}>
+    <header className="fixed inset-x-0 z-50 px-3 md:px-6" style={{ top: "max(0.75rem, env(safe-area-inset-top))" }}>
+      <div className="glass mx-auto max-w-5xl rounded-full">
+        <div className="flex h-14 items-center justify-between gap-3 ps-5 pe-2">
+          <Link to="/" className="min-w-0 whitespace-nowrap text-[0.95rem] font-semibold tracking-tight text-foreground">
             {language === "he" ? (
               <>
-                ד"ר עמית קוגלר.{" "}
-                <span className="hidden sm:inline font-normal text-muted-foreground">
-                  להאיר את התהליך האקדמי
-                </span>
+                ד"ר עמית קוגלר
+                <span className="hidden lg:inline font-normal text-muted-foreground"> · להאיר את התהליך האקדמי</span>
               </>
             ) : (
               <>
-                Dr. Amit Kugler{" "}
-                <span className="hidden sm:inline font-normal text-muted-foreground">
-                  Lighting the Academic Process
-                </span>
+                Dr. Amit Kugler
+                <span className="hidden lg:inline font-normal text-muted-foreground"> · Lighting the Academic Process</span>
               </>
             )}
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex shrink-0 items-center gap-3 lg:gap-6 text-sm lg:text-base">
+          <nav className="hidden md:flex shrink-0 items-center gap-1 text-sm">
             {navItems.map((item) => (
               <Link
                 key={item.label}
                 to={item.href}
-                className="text-foreground hover:text-accent transition-colors font-medium"
+                className="press rounded-full px-3 py-2 font-medium text-foreground/75 transition-colors hover:bg-foreground/5 hover:text-foreground"
               >
                 {item.label}
               </Link>
             ))}
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={toggleLanguage}
-              aria-label={t("Switch to English", "Switch to Hebrew")}
-              className="flex items-center gap-2"
+            {languageButton}
+            <Link
+              to="/#contact"
+              className="press ms-1 rounded-full bg-foreground px-4 py-2 font-semibold text-background hover:bg-foreground/85"
             >
-              <Globe className="h-4 w-4" />
-              {language === "he" ? "EN" : "עב"}
-            </Button>
+              {t("יצירת קשר", "Contact")}
+            </Link>
           </nav>
 
-          {/* Mobile Menu Button */}
-          <div className="flex shrink-0 items-center gap-2 md:hidden">
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={toggleLanguage}
-              aria-label={t("Switch to English", "Switch to Hebrew")}
-              className="flex items-center gap-1"
-            >
-              <Globe className="h-4 w-4" />
-              {language === "he" ? "EN" : "עב"}
-            </Button>
-            <Button
-              variant="ghost"
-              size="icon"
+          <div className="flex shrink-0 items-center gap-1 md:hidden">
+            {languageButton}
+            <button
+              type="button"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label={t("פתיחה וסגירה של התפריט", "Toggle navigation menu")}
               aria-expanded={isMenuOpen}
+              className="press flex h-10 w-10 items-center justify-center rounded-full hover:bg-foreground/5"
             >
               {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-            </Button>
+            </button>
           </div>
         </div>
-
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <nav className="md:hidden py-4 border-t border-border animate-fade-in">
-            {navItems.map((item) => (
-              <Link
-                key={item.label}
-                to={item.href}
-                className="block py-3 text-foreground hover:text-accent transition-colors font-medium"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
-        )}
       </div>
+
+      {isMenuOpen && (
+        <nav
+          className="glass mx-auto mt-2 max-w-5xl rounded-[1.75rem] p-2 md:hidden"
+          style={{ animation: "menuIn 450ms var(--ease-spring) both", transformOrigin: "top" }}
+        >
+          {[...navItems, { label: t("יצירת קשר", "Contact"), href: "/#contact" }].map((item) => (
+            <Link
+              key={item.label}
+              to={item.href}
+              className="press block rounded-2xl px-4 py-3 text-lg font-medium text-foreground hover:bg-foreground/5"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+      )}
     </header>
   );
 };
