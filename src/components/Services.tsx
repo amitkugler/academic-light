@@ -38,7 +38,7 @@ const services = [
 const Services = () => {
   const { t, isRTL } = useLanguage();
   return (
-    <section className="px-4 md:px-8 pt-16 md:pt-24 pb-8 md:pb-10 bg-section-alt">
+    <section className="px-4 md:px-8 pt-8 md:pt-10 pb-8 md:pb-10 bg-section-alt">
       <div className="container mx-auto px-4 md:px-8">
         <div className="text-start mb-12" dir={isRTL ? "rtl" : "ltr"}>
           <h2 className="text-2xl md:text-3xl font-bold mb-4">{t("בכל שלב בתהליך האקדמי")}<br />

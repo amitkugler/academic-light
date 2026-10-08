@@ -4,7 +4,7 @@ import amitProfile from "@/assets/amit-kugler-profile.jpg";
 const About = () => {
   const { t, isRTL } = useLanguage();
   return (
-    <section className="px-4 md:px-8 pt-8 md:pt-10 pb-16 md:pb-24 bg-background">
+    <section className="px-4 md:px-8 pt-8 md:pt-10 pb-8 md:pb-10 bg-background">
       <div className="container mx-auto px-4 md:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Text Content */}

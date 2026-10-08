@@ -46,7 +46,7 @@ const faqs = [
 const FAQ = () => {
   const { t, isRTL } = useLanguage();
   return (
-    <section className="section-padding bg-section-alt" id="content" dir={isRTL ? "rtl" : "ltr"}>
+    <section className="px-4 md:px-8 py-8 md:py-10 bg-section-alt" id="content" dir={isRTL ? "rtl" : "ltr"}>
       <div className="container-narrow mx-auto">
         <h2 className="text-2xl md:text-3xl font-bold mb-8 text-start animate-fade-up">{t("כמה שאלות שחוזרות כמעט תמיד")}</h2>
 
