@@ -155,10 +155,10 @@ const BlogPost = () => {
             </div>
 
             {/* Content */}
-            <div className="prose prose-lg max-w-none text-start">
+            <div className="max-w-none text-start">
               <p className="text-xl text-muted-foreground mb-8">{t(post.excerpt, post.excerptEn)}</p>
               <div
-                className="text-foreground leading-relaxed space-y-4"
+                className="article-body"
                 dangerouslySetInnerHTML={{ __html: t(post.fullContent, post.fullContentEn) }}
               />
             </div>
