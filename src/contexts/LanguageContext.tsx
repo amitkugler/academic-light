@@ -11,19 +11,9 @@ interface LanguageContextType {
 }
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
-  const [language, updateLanguage] = useState<Language>(() => {
-    try { return localStorage.getItem("preferred-language") === "en" ? "en" : "he"; }
-    catch { return "he"; }
-  });
+  const [language, updateLanguage] = useState<Language>("he");
   const manuallySelected = useRef(false);
   useEffect(() => {
-    try {
-      const saved = localStorage.getItem("preferred-language");
-      if (saved === "he" || saved === "en") {
-        manuallySelected.current = true;
-        return;
-      }
-    } catch { /* Automatic detection remains available. */ }
     let cancelled = false;
     detectRegion().then(region => {
       if (region && !cancelled && !manuallySelected.current) {
@@ -35,7 +25,6 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const setLanguage = (lang: Language) => {
     manuallySelected.current = true;
     updateLanguage(lang);
-    try { localStorage.setItem("preferred-language", lang); } catch { /* Session selection still works. */ }
   };
   const t = (he: string, en?: string) => language === "he" ? he : (en ?? englishTranslations[he] ?? he);
   const isRTL = language === "he";

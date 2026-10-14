@@ -8,8 +8,8 @@ export function detectRegion(): Promise<Region | null> {
       .then(async response => {
         if (!response.ok) return null;
         const data = await response.json();
-        return typeof data.country_code === "string" && typeof data.continent_code === "string"
-          ? { country: data.country_code, continent: data.continent_code } : null;
+        return typeof data.country_code === "string" && /^[A-Z]{2}$/.test(data.country_code)
+          ? { country: data.country_code, continent: typeof data.continent_code === "string" ? data.continent_code : "" } : null;
       })
       .catch(() => null);
   }
